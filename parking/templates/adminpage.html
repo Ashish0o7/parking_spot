@@ -5,27 +5,44 @@
         html, body {
             height: 100%;
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(45deg, #49a09d 0%, #5f2c82 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0099ff 0%, #ff99cc 100%);
             font-weight: 100;
         }
 
         .container {
             position: absolute;
-            top: 45%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
+            color: #fff;
         }
 
-        .text h1 {
+        .container h2 {
             font-size: 32px;
-            color: #fff;
             font-weight: bold;
-            margin-top: 120px;
-            padding-bottom: 30px;
-            font-family: cursive;
-            font-size: 70px;
+            margin-top: 40px;
+        }
+
+        .button {
+            background-color: #1E90FF;
+            border: none;
+            color: #fff;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 30px;
+            cursor: pointer;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+            outline: none;
+        }
+
+        .button:hover {
+            background-color: #0077b6;
         }
 
         /* Navigation Bar */
@@ -36,11 +53,12 @@
             width: 100%;
             top: 0;
             left: 0;
+            z-index: 1000;
         }
 
         .topnav a {
             float: left;
-            color: #f2f2f2;
+            color: #fff;
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
@@ -49,46 +67,29 @@
 
         .topnav a:hover {
             background-color: #778899;
-            color: black;
         }
 
         .topnav a.active {
             background-color: #1E90FF;
-            color: white;
         }
 
         .topright {
             position: absolute;
-            top: 1px;
-            right: 10px;
-            font-size: 1px;
+            top: 8px;
+            right: 16px;
+        }
+
+        .topright img {
+            width: 180px;
+            height: auto;
         }
 
         .toplg {
             position: absolute;
             top: 10px;
-            right: 260px;
+            right: 220px;
             font-size: 20px;
             color: white;
-        }
-
-        .button {
-            background-color: transparent;
-            border: groove;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 12px;
-            transition-duration: 0.4s;
-        }
-
-        .button:hover {
-            background-color: #333;
         }
     </style>
 </head>
@@ -100,23 +101,23 @@
     <a href="/fare">Fare</a>
     <a href="/index/">Logout</a>
     <div class="toplg">Admin view is active</div>
-    <div class="topright"><img src="https://i.ibb.co/SsDM6pc/securepark.png" width="210" height="45"></div>
+
 </div>
 
 <div class="container">
-    <h2 style="color:white;">Welcome Admin!!</h2>
+    <h2>Welcome Admin!!</h2>
 
     <form action="/printcomplaint/">
-        <button class="button" style="margin-top: 50px;">View Complaints</button><br><br>
+        <button class="button">View Complaints</button><br><br>
     </form>
     <form action="/printcontact/">
-        <button class="button" style="margin-top: 50px;">View Contact</button><br><br>
+        <button class="button">View Contact</button><br><br>
     </form>
     <form action="/printvehicles/">
-        <button class="button" style="margin-top: 50px;">Vehicles List</button><br><br>
+        <button class="button">Vehicles List</button><br><br>
     </form>
     <br><br><br>
-    <h4 style="color:white;">This page is Admin only. Please logout if not in use.</h4>
+    <h4>This page is Admin only. Please logout if not in use.</h4>
 </div>
 
 </body>
