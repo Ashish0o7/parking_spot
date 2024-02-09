@@ -5,14 +5,14 @@ This repository contains a parking manager application with various features and
 ## Screenshots
 
 ### Image 1: Dashboard View
-![Dashboard View](https://ibb.co/3N1yXdr)
+![Dashboard View](https://i.postimg.cc/Zn3L6Kpn/Screenshot-2024-02-09-at-10-54-28-PM.png)
 Description: This screenshot shows the dashboard view of the parking manager application, displaying important statistics and information at a glance.
 
-### Image 2: Parking Lot Map
-![Parking Lot Map](https://ibb.co/MPLQrNf)
-Description: This screenshot displays the parking lot map feature of the application, allowing users to visualize available parking spaces and their occupancy status.
+### Image 2: Parking Lot 2
+![Parking Lot Map](https://i.postimg.cc/mZFjvVJ4/Screenshot-2024-02-09-at-10-54-36-PM.png)
 
-### Image 3: Database Schema
-![Database Schema](https://ibb.co/JFCH150)
-Description: This screenshot showcases the database schema used in the application, implemented using SQLite3, depicting the structure of the parking manager's database tables.
+
+### Image 3: 
+![]https://i.postimg.cc/rFXjMx2r/Screenshot-2024-02-09-at-10-55-07-PM.png
+
 
