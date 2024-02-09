@@ -13,6 +13,6 @@ Description: This screenshot shows the dashboard view of the parking manager app
 
 
 ### Image 3: 
-![]https://i.postimg.cc/rFXjMx2r/Screenshot-2024-02-09-at-10-55-07-PM.png
+![](https://i.postimg.cc/rFXjMx2r/Screenshot-2024-02-09-at-10-55-07-PM.png)
 
 
