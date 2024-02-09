@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            color: #fff;
+            text-align: right;
+            padding: 10px 20px;
+        }
+
+        .topnav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        .topnav a:hover {
+            background-color: #555;
+        }
+
+        .topnav a.active {
+
+            color: white;
+        }
+
+
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type=text], input[type=email], input[type=number], textarea {
+            width: calc(100% - 30px);
+            border-radius: 25px;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            background: #f0f0f0;
+            font-size: 15px;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .registerbtn {
+            background-color: #1E90FF;
+            color: white;
+            padding: 15px 30px;
+            margin-top: 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .registerbtn:hover {
+            background-color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/fare">Fare</a>
+    <a href="/aboutus">About us</a>
+    <a href="/complaint">Complaint</a>
+    <a href="/signup/">SignUp</a>
+</div>
+
+<div class="bg-color">
+    <h1 align="center">Contact Us</h1>
+    <div class="container">
+        <div class="form-container">
+            <h2 style="color: #000;">Do you have any questions?</h2>
+            <h4 style="color: #000;">Fill out our contact form and we will contact you as soon as possible</h4>
+            <form action="/contactus/" method="post">
+                {% csrf_token %}
+                <input type="text" name="name" placeholder="Name"><br>
+                <input type="email" name="email" placeholder="Email"><br>
+                <input type="text" name="contactno" placeholder="Contact Number"><br>
+                <textarea rows="3" cols="30" placeholder="Question" name="question"></textarea><br>
+                <button type="submit" class="registerbtn">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

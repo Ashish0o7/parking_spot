@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-image {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-text {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 80%;
+  padding: 20px;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.button {
+  background-color: #1E90FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #4169E1;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #778899;
+}
+
+.topnav a.active {
+  background-color: #1E90FF;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a class="active" href="/">Home</a>
+  <a href="/maps">Map</a>
+  <a href="/fare">Fare</a>
+  <a href="/contactus">Contact us</a>
+  <a href="/aboutus">About us</a>
+  <a href="/complaint">Complaint</a>
+  <a href="/">Log Out</a>
+</div>
+
+<div class="bg-image"></div>
+
+{% if f == 1 %}
+<div class="bg-text">
+  <h2 style="font-size: 3em;">Parking Manager</h2>
+  <h3 style="letter-spacing: 3px;">Click on choice</h3>
+  <form action="/vehicleentry/">
+    <button class="button">Entry</button>
+  </form>
+
+  <form action="/vehicleexit/">
+    <button class="button">Exit</button>
+  </form>
+</div>
+{% endif %}
+
+</body>
+</html>

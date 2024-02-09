@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print Exit Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        .bg-heading {
+            text-align: center;
+        }
+
+        .bg-text {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .btn-print {
+            display: block;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        @media screen and (max-width: 600px) {
+            .bg-text {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="bg-heading">
+        <h1>Print Exit Details</h1>
+    </div>
+
+    <div class="bg-text">
+        <button onclick="window.print()" class="btn btn-primary btn-print">Print this page</button>
+
+        {% if obj %}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Your Vehicle Number:</th>
+                <td>{{ obj.vno }}</td>
+            </tr>
+            <tr>
+                <th>Vehicle Type:</th>
+                <td>{{ obj.vty }}</td>
+            </tr>
+            <tr>
+                <th>Out-Time of vehicle:</th>
+                <td>{{ obj.outtime }}</td>
+            </tr>
+            <tr>
+                <th>Total Fare to be paid:</th>
+                <td>{{ obj.farem }}</td>
+            </tr>
+            <tr>
+                <th>Tag Number:</th>
+                <td>{{ obj.tno }}</td>
+            </tr>
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

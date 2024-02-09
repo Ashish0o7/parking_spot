@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vehicle Exit</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #000;
+            margin: 0;
+            color: #fff;
+        }
+
+        .topnav {
+            overflow: hidden;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .topnav a {
+            float: left;
+            color: #fff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .topnav a:hover {
+            background-color: #778899;
+            color: #000;
+        }
+
+        .topnav a.active {
+            background-color: #1E90FF;
+            color: #fff;
+        }
+
+        .container {
+            position: relative;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .bg-text {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border-radius: 25px;
+            font-weight: bold;
+            border: 3px solid #708090;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        input[type=text],
+        input[type=password],
+        input[type=number],
+        input[type=date],
+        input[type=email],
+        select {
+            width: calc(100% - 30px);
+            border-radius: 25px;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus,
+        input[type=password]:focus,
+        input[type=number]:focus,
+        input[type=date]:focus,
+        input[type=email]:focus,
+        select:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        .registerbtn {
+            background-color: #1E90FF;
+            color: white;
+            border-radius: 25px;
+            padding: 16px 0;
+            margin: 10px 0;
+            border: none;
+            cursor: pointer;
+            width: calc(100% - 30px);
+            opacity: 0.9;
+            font-size: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .registerbtn:hover {
+            opacity: 1;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .messages {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+
+    <a href="/fare">Fare</a>
+    <a href="/contactus">Contact us</a>
+    <a href="/aboutus">About us</a>
+    <a href="/complaint">Complaint</a>
+    <a href="/">Log Out</a>
+</div>
+
+<div class="container">
+    <div class="bg-text">
+        <h1>Vehicle Details</h1>
+        <p>Please fill in the details below to get the details of the vehicle</p>
+        <form action="/vehicleexit/" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" placeholder="Enter Vehicle Number" name="vno" minlength="2" maxlength="20" required>
+            </div>
+
+            <div class="form-group">
+                <select name="vty" required>
+                    <option value="">Select Type of Vehicle</option>
+                    <option value="two">Two Wheeler</option>
+                    <option value="three">Three Wheeler</option>
+                    <option value="four">Four Wheeler</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="text" placeholder="Enter Tag No." name="tno" maxlength="20" required>
+            </div>
+
+            <button type="reset" class="registerbtn">Reset Data</button>
+            <button type="submit" class="registerbtn">Get Details</button>
+
+            <div class="messages">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-success"> {{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

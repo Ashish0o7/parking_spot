@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact us list</title>
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background image */
+.bg-image {
+  background-image: url("http://www.bathcityfc.com/wp-content/uploads/2017/11/Print.jpg");
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Header */
+.bg-heading {
+  font-family: Verlag, museo-sans, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  text-align: center;
+  color: white;
+}
+
+/* Main content */
+.bg-text {
+  border-radius: 20px;
+  background-color: rgba(128, 128, 128, 0.8);
+  font-family: "Helvetica", Times, serif;
+  color: black;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  width: 70%;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #778899;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #1E90FF;
+  color: white;
+}
+
+/* Logo and admin view */
+.topright {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+}
+
+.toplg {
+  position: absolute;
+  top: 10px;
+  right: 260px;
+  font-size: 20px;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  box-shadow: 0 0 90px rgba(0, 0, 0, 0.7);
+}
+
+th, td {
+  padding: 15px;
+  border: 1px solid black;
+  color: #FFFFE0;
+  font-size: 18px;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.4);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="topnav">
+ <a class="active" href="/adminpage/">Go to Admin</a>
+    <a><div class="toplg">Admin view is active</div></a>
+    <a><div class="topright"><img src="https://i.ibb.co/SsDM6pc/securepark.png" width="210" height="40"></div></a>
+</div>
+
+<div class="bg-image"></div>
+<div class="bg-heading">
+  <h1>Who wants to Contact - list</h1>
+</div>
+<div class="bg-text">
+{% if obj %}
+  <table>
+    <tr>
+      <th>ID of user</th>
+      <th>Name of user</th>
+      <th>Email address</th>
+      <th>Contact Number</th>
+      <th>Query</th>
+    </tr>
+    {% for k in obj %}
+    <tr>
+      <td>{{ k.id }}</td>
+      <td>{{ k.name }}</td>
+      <td>{{ k.mail }}</td>
+      <td>{{ k.contactno }}</td>
+      <td>{{ k.question }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+</div>
+</body>
+</html>

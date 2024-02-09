@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f0f0f0;
+    font-weight: 100;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+th, td {
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+th {
+    text-align: center;
+    background-color: #55608f;
+    color: #fff;
+}
+
+tbody tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Navigation Bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+}
+
+.topnav a {
+    float: left;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #778899;
+}
+
+.topnav a.active {
+    background-color: #1E90FF;
+}
+
+.topright {
+    position: absolute;
+    top: 28px;
+    right: 10px;
+    font-size: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+    <a class="active" href="/">Home</a>
+    <a href="/maps">Map</a>
+    <a href="/contactus">Contact us</a>
+    <a href="/aboutus">About us</a>
+    <a href="/complaint">Complaint</a>
+    <a href="/signup/">SignUp</a>
+</div>
+
+<div class="container">
+    <h1 style="text-align: center; color: #333; font-family: Arial, sans-serif; margin-top: 50px;">Fare of Vehicles for Parking</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Type of Vehicle</th>
+                <th>Four Wheelers (car etc)</th>
+                <th>Three Wheelers (Auto, Battery Rickshaw etc)</th>
+                <th>Two Wheelers (Scooter, Bike etc)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Upto 6 Hours</td>
+                <td style="text-align: center;">$30</td>
+                <td style="text-align: center;">$20</td>
+                <td style="text-align: center;">$15</td>
+            </tr>
+            <tr>
+                <td>Upto 12 Hours</td>
+                <td style="text-align: center;">$50</td>
+                <td style="text-align: center;">$35</td>
+                <td style="text-align: center;">$25</td>
+            </tr>
+            <tr>
+                <td>More than 12 hours</td>
+                <td style="text-align: center;">$60</td>
+                <td style="text-align: center;">$40</td>
+                <td style="text-align: center;">$30</td>
+            </tr>
+            <tr>
+                <td>Monthly Charges</td>
+                <td style="text-align: center;">$1200</td>
+                <td style="text-align: center;">$900</td>
+                <td style="text-align: center;">$600</td>
+            </tr>
+            <tr>
+                <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Daily)</td>
+                <td style="text-align: center;">$60</td>
+                <td style="text-align: center;">$50</td>
+                <td style="text-align: center;">$30</td>
+            </tr>
+            <tr>
+                <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Monthly)</td>
+                <td style="text-align: center;">$1200</td>
+                <td style="text-align: center;">$900</td>
+                <td style="text-align: center;">$600</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
