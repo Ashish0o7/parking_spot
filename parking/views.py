@@ -163,9 +163,6 @@ def vehicleentry(request):
 
     return render(request, 'vehicleentry.html',context)
 
-    #params = {'name': 'parking', 'place': 'mars'}
-    #return render(request,'vehicleentry.html', params)
-
 def aboutus(request):
     params = {'name': 'parking', 'place': 'mars'}
     return render(request,'aboutus.html', params)
@@ -199,62 +196,82 @@ def home(request):
 
 def maps(request):
     params = {'name': 'parking', 'place': 'mars'}
-    return render(request,'maps.html', params)
+    return render(request,'parking_space.html', params)
 
 t2=dt.strftime("%H:%M:%S")
 
+from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from django.utils import timezone
+from datetime import timedelta
+from .models import Vehicleentry, Vehicleexit
+
+# views.py
+from django.shortcuts import render, redirect
+from django.utils import timezone
+from datetime import timedelta
+from .models import Vehicleentry, Vehicleexit
+
+
 def vehicleexit(request):
-    n = 0
-    z = check()
-    if z == 1:
-        n = 1
-    context = {
-        'n': n,
-    }
     if request.method == 'POST':
-        vno = request.POST['vno']
-        vty = request.POST['vty']
-        tno = request.POST['tno']
-        outtime = t2
-        farem = 0
-        FMT = '%H:%M:%S'
-        tdiff = datetime.strptime(t2, FMT) - datetime.strptime(t1, FMT)
-        user = Vehicleentry()
-        tc1 = timedelta(hours=6, minutes=00)
-        tc2 = timedelta(hours=12, minutes=00)
-        #if Vehicleentry.objects.filter(vnumber=vno, vtype=vty).all():
-        user = Vehicleentry.objects.filter(vnumber=vno,vtype=vty,tagno=tno)
-        if len(user)>0:
-            if vty == 'two':
-                if tdiff <= tc1:
-                    farem = 15
-                elif tdiff <= tc2:
-                    farem = 25
-                elif tdiff > tc2:
-                    farem = 30
-            elif vty == 'three':
-                if tdiff <= tc1:
-                    farem = 20
-                elif tdiff <= tc2:
-                    farem = 35
-                elif tdiff > tc2:
-                    farem = 40
-            elif vty == 'four':
-                if tdiff <= tc1:
-                    farem = 30
-                elif tdiff <= tc2:
-                    farem = 50
-                elif tdiff > tc2:
-                    farem = 60
-            else:
-                farem = 0
-            exitt = Vehicleexit(vno=vno,vty=vty,outtime=outtime,farem=farem,tno=tno)
-            exitt.save()
-            return HttpResponse('<h2>Vehicle found in the parking lot.</h2><br><span style="font-size:25px" class="psw"> Print <a href="/printexit/" style="color:blue" style="font-size:30px">Recipt</a></span>')
-        else:
-            return HttpResponse('<h2>Vehicle not found in parking lot.</h2>')
-    else:
-        return render(request, 'vehicleexit.html',context)
+        # Retrieve selected vehicle from the form
+        vno = request.POST.get('vno')
+        tno = request.POST.get('tno')
+
+        # Ensure vno and tno are provided
+        if vno:
+            # Retrieve the selected vehicle from the database
+            vehicle = Vehicleentry.objects.filter(vnumber=vno, tagno=tno).first()
+
+            # If vehicle is found, proceed with exit process
+            if vehicle:
+                # Calculate parking duration
+                entry_time = vehicle.entry_time
+                exit_time = timezone.now()
+                parking_duration = exit_time - entry_time
+
+                # Calculate parking charges based on duration and vehicle type
+                if vehicle.vtype == 'two':
+                    if parking_duration <= timedelta(hours=6):
+                        farem = 15
+                    elif parking_duration <= timedelta(hours=12):
+                        farem = 25
+                    else:
+                        farem = 30
+                elif vehicle.vtype == 'three':
+                    if parking_duration <= timedelta(hours=6):
+                        farem = 20
+                    elif parking_duration <= timedelta(hours=12):
+                        farem = 35
+                    else:
+                        farem = 40
+                elif vehicle.vtype == 'four':
+                    if parking_duration <= timedelta(hours=6):
+                        farem = 30
+                    elif parking_duration <= timedelta(hours=12):
+                        farem = 50
+                    else:
+                        farem = 60
+                else:
+                    farem = 0  # Default fare if vehicle type is not recognized
+
+                # Delete the vehicle from the database
+                vehicle.delete()
+
+                # Save exit details
+                exit_details = Vehicleexit(vno=vehicle.vnumber, vty=vehicle.vtype, outtime=exit_time, farem=farem,
+                                           tno=tno)
+                exit_details.save()
+
+                # Render receipt template with charges information
+                return render(request, 'receipt.html',
+                              {'vehicle': vehicle, 'parking_duration': parking_duration, 'farem': farem})
+
+    # If method is GET or invalid form submission, render the vehicle exit page with vehicles
+    vehicles = Vehicleentry.objects.all()
+    return render(request, 'vehicleexit.html', {'vehicles': vehicles})
+
 
 def contactus(request):
    if request.method == "POST":
@@ -286,7 +303,10 @@ def printcomplaint(request):
     # obj = Registration.objects.last()
     obj = Complaints.objects.filter().all()
     return render(request, 'printcomplaint.html', {'obj':obj})
-
+def delete_complaint(request, complaint_id):
+    complaint = Complaints.objects.get(id=complaint_id)
+    complaint.delete()
+    return redirect('printcomplaint')
 def adminpage(request):
     params = {'name': 'parking', 'place': 'mars'}
     return render(request,'adminpage.html', params)

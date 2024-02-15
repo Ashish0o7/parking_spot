@@ -1,89 +1,119 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parking Manager</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
-html, body {
-    height: 100%;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
-    background: #f0f0f0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f0f0f0;
     font-weight: 100;
+    margin-top: 80px; /* Adjusted to account for the height of the navbar */
 }
 
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    max-width: 800px;
+    margin: 50px auto;
 }
 
-table {
-    width: 80%;
-    margin: auto;
+.table-container {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
     border-collapse: collapse;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
 }
 
-th, td {
+.table th, .table td {
     padding: 15px;
     background-color: #fff;
     border: 1px solid #ddd;
     color: #333;
+    text-align: center;
 }
 
-th {
-    text-align: center;
+.table th {
     background-color: #55608f;
     color: #fff;
 }
 
-tbody tr:hover {
+.table tbody tr:hover {
     background-color: #f2f2f2;
 }
 
+/* Animation */
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 /* Navigation Bar */
-.topnav {
-    overflow: hidden;
-    background-color: #333;
+.nav {
+    display: flex;
+    align-items: center;
     position: fixed;
-    width: 100%;
     top: 0;
-    z-index: 1;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 40;
+    animation: fadeInDown 0.5s ease;
 }
 
-.topnav a {
-    float: left;
-    color: #fff;
-    text-align: center;
-    padding: 14px 16px;
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav li {
+    margin: 0 20px;
+}
+
+.nav a {
     text-decoration: none;
-    font-size: 17px;
+    color: #333;
+    font-size: 1.2em;
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.topnav a:hover {
-    background-color: #778899;
+.nav a:hover {
+    background-color: #555;
+    color: #fff;
 }
 
-.topnav a.active {
-    background-color: #1E90FF;
-}
-
-.topright {
-    position: absolute;
-    top: 28px;
-    right: 10px;
-    font-size: 1px;
-}
 </style>
 </head>
 <body>
 
-<div class="topnav">
+<div class="nav">
     <a class="active" href="/">Home</a>
     <a href="/maps">Map</a>
     <a href="/contactus">Contact us</a>
@@ -93,56 +123,58 @@ tbody tr:hover {
 </div>
 
 <div class="container">
-    <h1 style="text-align: center; color: #333; font-family: Arial, sans-serif; margin-top: 50px;">Fare of Vehicles for Parking</h1>
+    <h1 style="text-align: center; color: #333; font-family: Arial, sans-serif;">Fare of Vehicles for Parking</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Type of Vehicle</th>
-                <th>Four Wheelers (car etc)</th>
-                <th>Three Wheelers (Auto, Battery Rickshaw etc)</th>
-                <th>Two Wheelers (Scooter, Bike etc)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Upto 6 Hours</td>
-                <td style="text-align: center;">$30</td>
-                <td style="text-align: center;">$20</td>
-                <td style="text-align: center;">$15</td>
-            </tr>
-            <tr>
-                <td>Upto 12 Hours</td>
-                <td style="text-align: center;">$50</td>
-                <td style="text-align: center;">$35</td>
-                <td style="text-align: center;">$25</td>
-            </tr>
-            <tr>
-                <td>More than 12 hours</td>
-                <td style="text-align: center;">$60</td>
-                <td style="text-align: center;">$40</td>
-                <td style="text-align: center;">$30</td>
-            </tr>
-            <tr>
-                <td>Monthly Charges</td>
-                <td style="text-align: center;">$1200</td>
-                <td style="text-align: center;">$900</td>
-                <td style="text-align: center;">$600</td>
-            </tr>
-            <tr>
-                <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Daily)</td>
-                <td style="text-align: center;">$60</td>
-                <td style="text-align: center;">$50</td>
-                <td style="text-align: center;">$30</td>
-            </tr>
-            <tr>
-                <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Monthly)</td>
-                <td style="text-align: center;">$1200</td>
-                <td style="text-align: center;">$900</td>
-                <td style="text-align: center;">$600</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Type of Vehicle</th>
+                    <th>Four Wheelers (car etc)</th>
+                    <th>Three Wheelers (Auto, Battery Rickshaw etc)</th>
+                    <th>Two Wheelers (Scooter, Bike etc)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Upto 6 Hours</td>
+                    <td>$30</td>
+                    <td>$20</td>
+                    <td>$15</td>
+                </tr>
+                <tr>
+                    <td>Upto 12 Hours</td>
+                    <td>$50</td>
+                    <td>$35</td>
+                    <td>$25</td>
+                </tr>
+                <tr>
+                    <td>More than 12 hours</td>
+                    <td>$60</td>
+                    <td>$40</td>
+                    <td>$30</td>
+                </tr>
+                <tr>
+                    <td>Monthly Charges</td>
+                    <td>$1200</td>
+                    <td>$900</td>
+                    <td>$600</td>
+                </tr>
+                <tr>
+                    <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Daily)</td>
+                    <td>$60</td>
+                    <td>$50</td>
+                    <td>$30</td>
+                </tr>
+                <tr>
+                    <td>Night Charges (Extra) (00:00Hrs to 05:00Hrs - Monthly)</td>
+                    <td>$200</td>
+                    <td>$900</td>
+                    <td>$600</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 </body>

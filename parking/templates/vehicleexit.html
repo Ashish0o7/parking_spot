@@ -1,162 +1,269 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vehicle Exit</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background-color: #000;
-            margin: 0;
-            color: #fff;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
+* {
+  box-sizing: border-box;
+}
 
-        .topnav a {
-            float: left;
-            color: #fff;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
 
-        .topnav a:hover {
-            background-color: #778899;
-            color: #000;
-        }
+h3{
+  margin-bottom: 100px;
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-        .topnav a.active {
-            background-color: #1E90FF;
-            color: #fff;
-        }
+.nav {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 40;
+  animation: fadeInDown 0.5s ease;
+}
 
-        .container {
-            position: relative;
-            padding: 20px;
-            text-align: center;
-        }
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-        .bg-text {
-            background-color: rgba(0, 0, 0, 0.4);
-            color: white;
-            border-radius: 25px;
-            font-weight: bold;
-            border: 3px solid #708090;
-            padding: 20px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
 
-        input[type=text],
-        input[type=password],
-        input[type=number],
-        input[type=date],
-        input[type=email],
-        select {
-            width: calc(100% - 30px);
-            border-radius: 25px;
-            padding: 15px;
-            margin: 10px 0;
-            border: none;
-            background: #f1f1f1;
-        }
+.nav li {
+  margin: 0 20px;
+}
 
-        input[type=text]:focus,
-        input[type=password]:focus,
-        input[type=number]:focus,
-        input[type=date]:focus,
-        input[type=email]:focus,
-        select:focus {
-            background-color: #ddd;
-            outline: none;
-        }
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2em;
+  padding: 15px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
-        .registerbtn {
-            background-color: #1E90FF;
-            color: white;
-            border-radius: 25px;
-            padding: 16px 0;
-            margin: 10px 0;
-            border: none;
-            cursor: pointer;
-            width: calc(100% - 30px);
-            opacity: 0.9;
-            font-size: 20px;
-            transition: opacity 0.3s ease;
-        }
+.nav a:hover {
+  background-color: #555;
+  color: #fff;
+}
 
-        .registerbtn:hover {
-            opacity: 1;
-        }
+.registerbtn {
+  background-color: #7d48b1;
+  color: white;
+  border-radius: 25px;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 30%;
+  opacity: 0.9;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+.registerbtn:hover {
+  transform: scale(1.1); /* Scale effect on hover */
+}
 
-        .messages {
-            margin-top: 20px;
-        }
-    </style>
+.container {
+  margin-top: 20px; /* Adjusted margin to avoid hiding below the navbar */
+  padding: 20px;
+  text-align: center;
+}
+
+.vehicle-box-container {
+  position: fixed;
+  top: 120px; /* Adjust this value as needed */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.vehicle-box {
+  background-color: #f0f0f0;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.vehicle-box:hover {
+  transform: scale(1.05);
+}
+
+.vehicle-details {
+  font-weight: bold;
+}
+.vehicle-details{
+    color:black;
+}
+.vehicle-type {
+  color: #555;
+}
+
+.vehicle-select {
+  display: none;
+}
+
+.vehicle-box.selected {
+  background-color: #7d48b1;
+  color: white;
+}
+
+.vehicle-box.selected .vehicle-details {
+  color: #ffffff;
+}
+
+.vehicle-box.selected .vehicle-type {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.confirm-exit {
+  display: none;
+}
+
+/* Confirmation Modal */
+.confirmation-modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.confirmation-modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.confirmation-modal-content button {
+  background-color: #7d48b1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.confirmation-modal-content button:hover {
+  background-color: #6a358b;
+}
+</style>
 </head>
 <body>
-<div class="topnav">
-    <a class="active" href="/">Home</a>
 
-    <a href="/fare">Fare</a>
-    <a href="/contactus">Contact us</a>
-    <a href="/aboutus">About us</a>
-    <a href="/complaint">Complaint</a>
-    <a href="/">Log Out</a>
+<div class="nav">
+  <ul>
+    <li><a class="active" href="/">Home</a></li>
+    <li><a href="/maps">Map</a></li>
+    <li><a href="/fare">Fare</a></li>
+    <li><a href="/contactus">Contact us</a></li>
+    <li><a href="/complaint">Complaint</a></li>
+    <li><a href="/">Log Out</a></li>
+    <li><a href="/index">Entry-Exit</a></li>
+  </ul>
 </div>
 
 <div class="container">
-    <div class="bg-text">
-        <h1>Vehicle Details</h1>
-        <p>Please fill in the details below to get the details of the vehicle</p>
-        <form action="/vehicleexit/" method="post">
-            {% csrf_token %}
-
-            <div class="form-group">
-                <input type="text" placeholder="Enter Vehicle Number" name="vno" minlength="2" maxlength="20" required>
-            </div>
-
-            <div class="form-group">
-                <select name="vty" required>
-                    <option value="">Select Type of Vehicle</option>
-                    <option value="two">Two Wheeler</option>
-                    <option value="three">Three Wheeler</option>
-                    <option value="four">Four Wheeler</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <input type="text" placeholder="Enter Tag No." name="tno" maxlength="20" required>
-            </div>
-
-            <button type="reset" class="registerbtn">Reset Data</button>
-            <button type="submit" class="registerbtn">Get Details</button>
-
-            <div class="messages">
-                {% if messages %}
-                    {% for message in messages %}
-                        <div class="alert alert-success"> {{ message }}</div>
-                    {% endfor %}
-                {% endif %}
-            </div>
-        </form>
+  <div class="bg-text">
+    <h1 style="font-size: 2em; margin-top: 43px">Vehicles in the Parking Lot:</h1>
+    <br><br><!-- Adjusted font size -->
+    <div class="vehicle-box-container">
+      {% if vehicles %}
+        {% for vehicle in vehicles %}
+          <div class="vehicle-box" data-vno="{{ vehicle.vnumber }}" data-tno="{{ vehicle.tagno }}" onclick="selectVehicle(this)">
+            <div class="vehicle-details">{{ vehicle.vnumber }}</div>
+            <div class="vehicle-type">{{ vehicle.vtype }} wheeler</div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No vehicles currently in the parking lot.</p>
+      {% endif %}
     </div>
+  </div>
 </div>
+
+<!-- Confirmation Modal -->
+<div id="confirmationModal" class="confirmation-modal">
+  <div class="confirmation-modal-content">
+    <p>Are you sure you want to exit this vehicle?</p>
+    <form method="post" action="/vehicleexit/">
+      {% csrf_token %}
+      <input type="hidden" id="selectedVehicle" name="vno">
+      <input type="hidden" id="selectedTag" name="tno">
+      <button type="submit" class="registerbtn">Yes, Exit</button>
+      <button type="button" onclick="closeConfirmationModal()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<script>
+ function selectVehicle(vehicle) {
+  var vno = vehicle.getAttribute("data-vno");
+  var tno = vehicle.getAttribute("data-tno");
+
+  document.getElementById("selectedVehicle").value = vno;
+  document.getElementById("selectedTag").value = tno;
+
+  // Show confirmation modal
+  document.getElementById("confirmationModal").style.display = "block";
+}
+
+
+  function closeConfirmationModal() {
+    document.getElementById("confirmationModal").style.display = "none";
+  }
+</script>
 
 </body>
 </html>

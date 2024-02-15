@@ -102,6 +102,7 @@
             <th>Address</th>
             <th>Complaint Type</th>
             <th>Message</th>
+            <th>Action</th> <!-- New column for delete button -->
         </tr>
         </thead>
         <tbody>
@@ -114,11 +115,17 @@
                     <td>{{ complaint.address }}</td>
                     <td>{{ complaint.space }}</td>
                     <td>{{ complaint.message }}</td>
+                    <td>
+                        <form action="{% url 'delete_complaint' complaint.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="6">No complaints registered.</td>
+                <td colspan="7">No complaints registered.</td>
             </tr>
         {% endif %}
         </tbody>

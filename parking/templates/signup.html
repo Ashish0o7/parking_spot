@@ -4,35 +4,87 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sign Up Form</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <style>
   body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
-  nav {
+  .navbar {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px 20px;
     text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    animation: fadeInDown 0.5s ease;
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .navbar h2 {
+    margin: 0;
+  }
+
+  .navbar ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .navbar li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  .navbar a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    color: #ccc;
   }
 
   .container {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
+    width: 80%; /* Adjusted width */
     max-width: 600px;
-    margin: 20px auto;
+    margin: 80px auto 20px; /* Adjusted margin to account for the fixed navbar */
     box-sizing: border-box;
+    animation: fadeIn 1s ease; /* Fade-in animation */
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   h1 {
     margin-bottom: 20px;
     color: #333;
+    text-align: center;
   }
 
   input[type="text"],
@@ -48,6 +100,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    transition: all 0.3s ease;
   }
 
   select {
@@ -73,6 +126,7 @@
     color: #666;
     font-size: 14px;
     margin-top: 15px;
+    text-align: center;
   }
 
   .required {
@@ -89,17 +143,29 @@
   .form-group input,
   .form-group select {
     flex: 1;
+    transition: all 0.3s ease;
   }
 
   .form-group input[type="date"] {
     flex-basis: 100%;
   }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      width: 90%; /* Adjusted width for smaller screens */
+    }
+  }
 </style>
 </head>
 <body>
 
-<nav>
-  <h2>Parking Manager: Sign Up</h2>
+<nav class="navbar">
+  <ul>
+    <li><a href="/index/">Login</a></li>
+    <li><a href="/contactus/">Contact us</a></li>
+    <li><a href="/complaint/">Complaints</a></li>
+    <li><a href="/aboutus/">About us</a></li>
+  </ul>
 </nav>
 
 <div class="container">

@@ -63,7 +63,17 @@ class Complaints(models.Model):
     def __str__(self):
         return self.fname
 
+
+from django.db import models
+
+
 class Vehicleentry(models.Model):
+    VEHICLE_CHOICE = [
+        ('two', 'Two Wheeler'),
+        ('three', 'Three Wheeler'),
+        ('four', 'Four Wheeler'),
+    ]
+
     vnumber = models.CharField(max_length=10)
     vtype = models.CharField(max_length=10, choices=VEHICLE_CHOICE, default='two')
     contactno = models.CharField(max_length=10, default="")
@@ -72,18 +82,27 @@ class Vehicleentry(models.Model):
     spacealloted = models.CharField(max_length=10)
     flooralloted = models.CharField(max_length=10)
     tagno = models.CharField(max_length=10)
+    entry_time = models.DateTimeField(auto_now_add=True)  # Added entry_time attribute
 
     def __str__(self):
         return self.vnumber + '-' + self.vtype
 
+from django.db import models
+
 class Vehicleexit(models.Model):
-    vno = models.CharField(max_length=10,default='')
+    VEHICLE_CHOICE = [
+        ('two', 'Two Wheeler'),
+        ('three', 'Three Wheeler'),
+        ('four', 'Four Wheeler')
+    ]
+
+    vno = models.CharField(max_length=10, default='')
     vty = models.CharField(max_length=10, choices=VEHICLE_CHOICE, default='two')
-    outtime = models.TimeField(null=True, blank=True)
-    farem = models.CharField(max_length=4,null=True, blank=True)
-    tno = models.CharField(max_length=10,default='')
+    outtime = models.DateTimeField(null=True, blank=True)
+    farem = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
+    tno = models.CharField(max_length=10, default='')
 
     def __str__(self):
-        return self.vno + '-' + self.vty
+        return f"{self.vno} - {self.vty}"
 
 

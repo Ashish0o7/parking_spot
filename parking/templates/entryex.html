@@ -13,14 +13,9 @@ body, html {
   box-sizing: border-box;
 }
 
-.bg-image {
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+
+
+
 
 .bg-text {
   background-color: rgba(0, 0, 0, 0.8);
@@ -36,6 +31,16 @@ body, html {
   padding: 20px;
   text-align: center;
   border-radius: 15px;
+  animation: slideIn 1s ease; /* Text slide-in animation */
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translate(-50%, -70%); /* Initial position above the screen */
+  }
+  100% {
+    transform: translate(-50%, -50%); /* Final position centered */
+  }
 }
 
 .button {
@@ -57,33 +62,62 @@ body, html {
   background-color: #4169E1;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
+.nav {
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 40;
+      animation: fadeInDown 0.5s ease;
+    }
 
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-.topnav a:hover {
-  background-color: #778899;
-}
+    .nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+    }
 
-.topnav a.active {
-  background-color: #1E90FF;
-}
+    nav li {
+      margin: 0 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1.2em;
+      padding: 15px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav a:hover {
+      background-color: #555;
+      color: #fff;
+    }
 
 </style>
 </head>
 <body>
 
-<div class="topnav">
+<div class="nav">
   <a class="active" href="/">Home</a>
   <a href="/maps">Map</a>
   <a href="/fare">Fare</a>
@@ -97,14 +131,14 @@ body, html {
 
 {% if f == 1 %}
 <div class="bg-text">
-  <h2 style="font-size: 3em;">Parking Manager</h2>
-  <h3 style="letter-spacing: 3px;">Click on choice</h3>
+  <h2 style="font-size: 3em;">Welcome to Parking Manager</h2>
+  <h3 style="letter-spacing: 3px;">Choose an action</h3>
   <form action="/vehicleentry/">
-    <button class="button">Entry</button>
+    <button class="button">Vehicle Entry</button>
   </form>
 
   <form action="/vehicleexit/">
-    <button class="button">Exit</button>
+    <button class="button">Vehicle Exit</button>
   </form>
 </div>
 {% endif %}

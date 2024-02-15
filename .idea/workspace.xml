@@ -5,10 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94025f6e-11a1-4e46-a82f-2690b2b79fd2" name="Default Changelist" comment="first commit">
+      <change afterPath="$PROJECT_DIR$/parking/templates/parking_space.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parking/templates/adminpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/adminpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/aboutus.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/aboutus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/complaint.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/complaint.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/contactus.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/contactus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/entryex.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/entryex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/fare.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/fare.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parking/templates/printcomplaint.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/printcomplaint.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/printcontact.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/printcontact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/printentry.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/printentry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/printexit.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/printexit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/vehicleentry.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/vehicleentry.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/templates/vehicleexit.html" beforeDir="false" afterPath="$PROJECT_DIR$/parking/templates/vehicleexit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parking/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/parking/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,21 +221,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/ashishkumar/PycharmProjects/SecurePark-Parking-Booking/parking",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/ashishkumar/PycharmProjects/SecurePark-Parking-Booking/parking&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/parking" />
@@ -253,7 +270,10 @@
       <workItem from="1707484428363" duration="3729000" />
       <workItem from="1707488914591" duration="413000" />
       <workItem from="1707489384382" duration="2856000" />
-      <workItem from="1707495031459" duration="5602000" />
+      <workItem from="1707495031459" duration="6232000" />
+      <workItem from="1707730437160" duration="6733000" />
+      <workItem from="1707804508813" duration="61000" />
+      <workItem from="1707986117922" duration="6509000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <option name="closed" value="true" />
